@@ -1,0 +1,13 @@
+*.iml
+.gradle
+/.idea
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+# 本机 SDK 路径，不入库
+local.properties
+# 本地解压的构建工具
+/.gradle-dist

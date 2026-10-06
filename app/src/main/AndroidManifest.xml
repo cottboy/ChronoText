@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 发送短信（个人侧载使用，不适用商店默认短信应用政策） -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 通讯录选人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 读取 SIM 卡订阅信息（双卡选择） -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 提醒与结果通知 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- 开机后重排任务 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 精确闹钟：Android 12~12L 用 SCHEDULE_EXACT_ALARM（默认授予），
+         13+ 用 USE_EXACT_ALARM（声明即授予，侧载应用合法） -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- 引导用户关闭电池优化，防止国产 ROM 杀后台 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".ChronoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ChronoText">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 闹钟触发：到点发短信 / 发提醒通知 -->
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- 短信发送结果回执 -->
+        <receiver
+            android:name=".receiver.SmsResultReceiver"
+            android:exported="false" />
+
+        <!-- 系统事件：开机 / 覆盖安装 / 时间或时区变化时重排任务 -->
+        <receiver
+            android:name=".receiver.SystemEventReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

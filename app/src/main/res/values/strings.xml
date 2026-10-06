@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 应用 -->
+    <string name="app_name">时光短信</string>
+    <string name="tab_tasks">任务</string>
+    <string name="tab_logs">记录</string>
+
+    <!-- 通用 -->
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="save_action">保存</string>
+    <string name="delete_action">删除</string>
+    <string name="delete_title">删除任务</string>
+    <string name="delete_confirm">确定删除任务「%1$s」吗？其发送记录会保留。</string>
+
+    <!-- 任务列表 -->
+    <string name="task_new">新建任务</string>
+    <string name="task_new_title">新建任务</string>
+    <string name="task_edit_title">编辑任务</string>
+    <string name="empty_tasks_title">还没有定时任务</string>
+    <string name="empty_tasks_hint">点右下角 + 创建第一个任务，\n再也不忘记重要的日子</string>
+    <string name="task_recipient_prefix">收件人：</string>
+    <string name="task_next_run">下次发送：%1$s</string>
+    <string name="task_disabled">已停用</string>
+
+    <!-- 权限体检 -->
+    <string name="perm_all_ok">✓ 权限已全部就绪</string>
+    <string name="perm_need_title">需要授权才能正常发送</string>
+    <string name="perm_need_hint">为防漏发，请逐项完成授权；电池优化白名单可防止系统杀后台。</string>
+    <string name="perm_runtime">申请短信/通讯录权限</string>
+    <string name="perm_exact_alarm">精确闹钟权限</string>
+    <string name="perm_battery">电池优化白名单</string>
+
+    <!-- 任务编辑 -->
+    <string name="field_name">任务名称（如：给宝贝的生日祝福）</string>
+    <string name="field_phone">收件人手机号</string>
+    <string name="field_phone_with_name">收件人手机号（%1$s）</string>
+    <string name="field_pick_contact">通讯录</string>
+    <string name="field_content">短信内容</string>
+    <string name="field_sim">发信卡</string>
+    <string name="sim_default">系统默认卡</string>
+    <string name="field_repeat">发送周期</string>
+    <string name="repeat_once">单次</string>
+    <string name="repeat_yearly_solar">每年公历</string>
+    <string name="repeat_yearly_lunar">每年农历</string>
+    <string name="repeat_every_n_days">每 N 天</string>
+    <string name="field_once_date">发送日期</string>
+    <string name="field_month">月份</string>
+    <string name="month_n">%1$d 月</string>
+    <string name="field_day">日期</string>
+    <string name="day_n">%1$d 日</string>
+    <string name="field_leap_month">闰月</string>
+    <string name="leap_prefix">闰</string>
+    <string name="field_leap_fallback">当年没有该闰月时</string>
+    <string name="leap_fallback_regular">用同序号普通月</string>
+    <string name="leap_fallback_skip">跳过当年</string>
+    <string name="field_anchor_date">起始日期</string>
+    <string name="field_interval">间隔天数</string>
+    <string name="field_time">发送时刻</string>
+    <string name="field_reminder">发送前提醒</string>
+
+    <!-- 校验错误 -->
+    <string name="err_name_empty">请填写任务名称</string>
+    <string name="err_phone_invalid">手机号格式不正确</string>
+    <string name="err_content_empty">请填写短信内容</string>
+    <string name="err_date_required">请选择日期</string>
+    <string name="err_once_past">所选时间已过去，请重新选择</string>
+    <string name="err_interval_invalid">间隔天数必须是不小于 1 的整数</string>
+    <string name="err_save_failed">保存失败</string>
+
+    <!-- 发送记录 -->
+    <string name="empty_logs">暂无发送记录</string>
+    <string name="logs_clear">清空记录</string>
+    <string name="logs_clear_confirm">确定清空全部发送记录吗？该操作不可恢复。</string>
+    <string name="logs_attempt">第 %1$d 次尝试</string>
+    <string name="logs_scheduled_at">计划时间：%1$s</string>
+    <string name="status_success">成功</string>
+    <string name="status_failed">失败</string>
+    <string name="status_pending">进行中</string>
+    <string name="status_skipped">已跳过</string>
+
+    <!-- 通知 -->
+    <string name="channel_failure">发送失败通知</string>
+    <string name="channel_success">发送成功通知</string>
+    <string name="channel_reminder">发送前提醒</string>
+    <string name="notif_success_title">定时短信已发送</string>
+    <string name="notif_success_text">已发送给 %1$s</string>
+    <string name="notif_failure_title">定时短信发送失败</string>
+    <string name="notif_failure_text">任务「%1$s」发送给 %2$s 失败：%3$s，请打开应用手动补发。</string>
+    <string name="notif_remind_title">定时短信即将发送</string>
+    <string name="notif_remind_text">任务「%1$s」将于 %2$s 发送给 %3$s</string>
+</resources>
