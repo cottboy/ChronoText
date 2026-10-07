@@ -15,6 +15,9 @@ import android.provider.Settings
  */
 object AutoStartGuide {
 
+    private const val PREFS_NAME = "autostart_guide"
+    private const val KEY_DISMISSED = "dismissed"
+
     /** 已知存在独立自启动/后台管控开关的厂商与品牌（小写，contains 匹配以兼容大小写差异） */
     private val RESTRICTIVE = setOf(
         "xiaomi", "redmi", "poco", "blackshark",
@@ -23,6 +26,17 @@ object AutoStartGuide {
         "vivo", "iqoo",
         "meizu", "lenovo", "zte", "nubia", "asus",
     )
+
+    /** 用户是否已选择「不再提醒」自启动引导 */
+    fun isDismissed(context: Context): Boolean =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getBoolean(KEY_DISMISSED, false)
+
+    /** 永久关闭自启动引导（弹窗与卡片区块一并隐藏） */
+    fun dismiss(context: Context) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putBoolean(KEY_DISMISSED, true).apply()
+    }
 
     /** 各厂商自启动管理页候选组件（依次尝试，系统里存在该组件才使用） */
     private val CANDIDATES: List<Pair<String, ComponentName>> = listOf(

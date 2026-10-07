@@ -32,6 +32,11 @@
     <string name="perm_battery">电池优化白名单</string>
     <string name="perm_autostart_hint">当前手机品牌还需允许本应用「自启动」和「后台运行」，否则到点可能无法唤醒发送（与上面的权限相互独立）。</string>
     <string name="perm_autostart_go">前往自启动设置</string>
+    <string name="perm_autostart_dismiss">不再提醒</string>
+    <string name="autostart_dialog_title">需要开启自启动</string>
+    <string name="autostart_dialog_text">你的手机品牌需要在系统设置中允许「时光短信」自启动并在后台运行，否则定时短信到点可能无法发送。稍后也可以在任务页顶部的权限体检卡中找到此入口。</string>
+    <string name="autostart_dialog_go">前往设置</string>
+    <string name="autostart_dialog_never">不再提醒</string>
 
     <!-- 任务编辑 -->
     <string name="field_name">任务名称（如：给宝贝的生日祝福）</string>
