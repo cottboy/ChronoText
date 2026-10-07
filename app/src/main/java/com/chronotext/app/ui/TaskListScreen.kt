@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
@@ -58,6 +59,7 @@ import com.chronotext.app.R
 import com.chronotext.app.data.AppDatabase
 import com.chronotext.app.data.TaskEntity
 import com.chronotext.app.schedule.TaskService
+import com.chronotext.app.util.AutoStartGuide
 import com.chronotext.app.util.Format
 import com.chronotext.app.util.SimHelper
 import kotlinx.coroutines.launch
@@ -302,6 +304,24 @@ private fun PermissionHealthCard() {
                             Text(stringResource(R.string.perm_battery))
                         }
                     }
+                }
+            }
+            // 国产 ROM 的自启动/后台运行是厂商私有开关，无法检测状态，常驻显示引导
+            if (AutoStartGuide.isRestrictiveManufacturer()) {
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    stringResource(R.string.perm_autostart_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                TextButton(onClick = {
+                    AutoStartGuide.settingsIntent(context)?.let { intent ->
+                        runCatching { context.startActivity(intent) }
+                    }
+                }) {
+                    Icon(Icons.Filled.Settings, contentDescription = null, Modifier.size(16.dp))
+                    Spacer(Modifier.size(4.dp))
+                    Text(stringResource(R.string.perm_autostart_go))
                 }
             }
         }

@@ -15,6 +15,13 @@ interface SendLogDao {
     @Query("SELECT * FROM send_logs WHERE id = :id")
     suspend fun byId(id: Long): SendLogEntity?
 
+    /** 某任务某次发送计划的最新记录（防重复发送与自愈核对用） */
+    @Query(
+        "SELECT * FROM send_logs WHERE taskId = :taskId AND scheduledAt = :scheduledAt " +
+            "ORDER BY id DESC LIMIT 1"
+    )
+    suspend fun latestByTaskAndScheduledAt(taskId: Long, scheduledAt: Long): SendLogEntity?
+
     @Insert
     suspend fun insert(log: SendLogEntity): Long
 

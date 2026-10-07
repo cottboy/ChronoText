@@ -30,4 +30,6 @@ data class SendLogEntity(
     val detail: String = "",
     /** 第几次尝试（1 起） */
     val attempt: Int = 1,
+    /** 最近一次活动时间（建记录或开始新尝试），自愈核对据此判断发送链路是否卡死 */
+    val lastActivityAt: Long = 0,
 )

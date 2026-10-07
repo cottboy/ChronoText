@@ -30,6 +30,8 @@
     <string name="perm_runtime">申请短信/通讯录权限</string>
     <string name="perm_exact_alarm">精确闹钟权限</string>
     <string name="perm_battery">电池优化白名单</string>
+    <string name="perm_autostart_hint">当前手机品牌还需允许本应用「自启动」和「后台运行」，否则到点可能无法唤醒发送（与上面的权限相互独立）。</string>
+    <string name="perm_autostart_go">前往自启动设置</string>
 
     <!-- 任务编辑 -->
     <string name="field_name">任务名称（如：给宝贝的生日祝福）</string>
@@ -78,6 +80,7 @@
     <string name="status_failed">失败</string>
     <string name="status_pending">进行中</string>
     <string name="status_skipped">已跳过</string>
+    <string name="fail_receipt_timeout">发送回执超时，结果未知</string>
 
     <!-- 通知 -->
     <string name="channel_failure">发送失败通知</string>

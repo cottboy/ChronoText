@@ -21,15 +21,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.chronotext.app.schedule.TaskService
 import com.chronotext.app.ui.LogsScreen
 import com.chronotext.app.ui.TaskEditScreen
 import com.chronotext.app.ui.TaskListScreen
 import com.chronotext.app.ui.theme.ChronoTextTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -40,6 +44,10 @@ class MainActivity : ComponentActivity() {
             ChronoTextTheme {
                 AppNav()
             }
+        }
+        // 打开应用时核对一遍任务闹钟：清理残留、补发被系统漏掉的发送
+        lifecycleScope.launch(Dispatchers.IO) {
+            TaskService.rescheduleAll(applicationContext)
         }
     }
 }
